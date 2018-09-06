@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Stock;
+
 
 class StockController extends Controller
 {
@@ -12,9 +14,13 @@ class StockController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+
+        return view('index');
+
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +40,14 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        Stock::create([
+            'stockName' => $request->stockName,
+            'stockPrice' => $request->stockPrice,
+            'stockYear' => $request->stockYear,            
+        ]);
+
+        return redirect('stocks');
     }
 
     /**
@@ -81,4 +94,19 @@ class StockController extends Controller
     {
         //
     }
+
+    
+
+    public function chart() {
+
+        // Since there can be so much data --> NOT use Eloquent ORM BUT Query Builder ..
+        $result = DB::table('stocks')->where('stockName', 'Infosys')
+                                     ->orderBy('stockYear', 'ASC')
+                                     ->get();
+
+        return response()->json($result);
+
+    }
+
+
 }

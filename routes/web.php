@@ -16,10 +16,13 @@ Route::get('/', function () {
 });
 
 
+Route::get('stocks', 'StockController@index');
+
 Route::prefix('stock')->group(function() {
 
 	Route::get('add', 'StockController@create');
 	Route::post('add', 'StockController@store');
+	Route::get('chart', 'StockController@chart');
 
 });
 
