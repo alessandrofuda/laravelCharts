@@ -19,7 +19,7 @@
             {{csrf_field()}}
             <div class="form-group">
                <label for="stockName">Stock Name:</label>
-               <input type="text" class="form-control" id="stockName" name="stockName">
+               <input type="text" class="form-control" id="stockName" name="stockName" placeholder="Infosys (.. to test ..)">
              </div>
              <div class="form-group">
                <label for="stockPrice">Stock Price:</label>
@@ -41,7 +41,10 @@
                   <option value="1996">1996</option-->
               </select>
             </div>
-             <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ url('stocks') }}">
+                  <button class="btn btn-outline" style="color: #888888; border-color: #888888; margin-left: 2%;">Return</button>
+                </a>
           </form>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

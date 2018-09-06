@@ -22,6 +22,7 @@ Route::prefix('stock')->group(function() {
 
 	Route::get('add', 'StockController@create');
 	Route::post('add', 'StockController@store');
+	// ajax call from stocks chart page
 	Route::get('chart', 'StockController@chart');
 
 });

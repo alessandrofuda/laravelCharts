@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Stock;
+use DB;
 
 
 class StockController extends Controller
@@ -50,6 +51,32 @@ class StockController extends Controller
         return redirect('stocks');
     }
 
+
+
+    public function chart() 
+    {
+
+        // Since there can be so much data --> NOT use Eloquent ORM BUT Query Builder ..
+        $result = DB::table('stocks')->where('stockName', 'Infosys')
+                                     ->orderBy('stockYear', 'ASC')
+                                     // ->groupBy('stockYear')
+                                     ->select('stockYear', DB::raw('avg(stockPrice) as stockPrice'))  // if there are double years for the same stockName
+                                     ->groupBy('stockYear')
+                                     ->get();
+
+        return response()->json($result);
+
+    }
+
+
+
+
+
+
+
+
+
+
     /**
      * Display the specified resource.
      *
@@ -93,19 +120,6 @@ class StockController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    
-
-    public function chart() {
-
-        // Since there can be so much data --> NOT use Eloquent ORM BUT Query Builder ..
-        $result = DB::table('stocks')->where('stockName', 'Infosys')
-                                     ->orderBy('stockYear', 'ASC')
-                                     ->get();
-
-        return response()->json($result);
-
     }
 
 
