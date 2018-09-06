@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::prefix('stock')->group(function() {
+
+	Route::get('add', 'StockController@create');
+	Route::post('add', 'StockController@store');
+
+});
+
+
+
+
