@@ -15,10 +15,18 @@
         <style>
             .row { margin:2% auto; padding:2% 0; }
         </style>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+
+
     </head>
     <body>
         <div class="container">
-            <div class="content">
+            <!--div class="content"-->
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 text-right">
                         <a href="{{ url('stock/add') }}">
@@ -34,7 +42,7 @@
 
 
 
-                            <!-- Vuejs -->
+                            <!-- Vuejs CDN -->
                             <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
                             <!-- 1 main html -->
@@ -77,6 +85,57 @@
                         </div>
                     </div>
                 </div>
+
+
+                <style>
+                  #bootstrap-test.row > div { min-height: 100px; border:1px solid red; text-align: center;}
+                </style>
+                <div class="row">
+                  <h1 class="text-center">Bootstrap4 tests</h1>
+                </div>
+                <div id="bootstrap-test" class="row">
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1 height">a</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">b</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">c</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">d</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">e</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">f</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">g</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">h</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">i</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">l</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">m</div>
+                  <div class="col-sm-6 col-md-4 col-lg-2 col-xl-1">n</div>
+                </div>
+                <div class="row">
+                  <h4>Progress bar</h4>
+                  <div class="progress" style="height: 20px;">
+                    <div id="dynamic" class="progress-bar progress-bar-striped active" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <script>
+                  $(function() {
+                      var current_progress = 0;
+                      var interval = setInterval(function() {
+                          current_progress += 1;
+                          $("#dynamic")
+                          .css("width", current_progress + "%")
+                          .attr("aria-valuenow", current_progress)
+                          .text(current_progress + "% Complete");
+                          if (current_progress > 105) {
+                              // clearInterval(interval);
+                              current_progress = 0;
+                          }
+                      }, 100);
+                    });
+                </script>    
+
+
+
+
+
+
+
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                        <div class="panel panel-default">
@@ -87,14 +146,10 @@
                        </div>
                     </div>
                 </div>
-            </div>
+            <!--/div-->
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js" charset="utf-8"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
-
+        
         
         
         <script>
